@@ -64,6 +64,13 @@
     {% for flight in flights %}
         <div class="col-sm-3">
         <p>{{ flight }}</p>
+        <p>ticket left:{{ flight.tickets }}</p>
+        {% comment %} <a href="{% url 'buy_ticket' flight.id %}" class="btn btn-primary">Buy Ticket</a> {% endcomment %}
+        <form method="POST" action="{% url 'buy_ticket' flight.id %}">
+          {% csrf_token %}
+          Number:<input name="number">
+          <input type="submit" value="Buy Ticket" class="btn btn-success">
+        </form>
         <img src="https://loremflickr.com/320/320/plane?random={{flight.id}}" class="img-responsive" style="width:100%" alt="Image">
       </div>  
     {% empty %}
