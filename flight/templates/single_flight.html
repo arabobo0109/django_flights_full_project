@@ -1,0 +1,21 @@
+{% extends 'base.html' %} {% load static %}{% block content %}
+
+<div class="col-sm-3">
+  <p>{{ flight }}</p>
+  <p>ticket left:{{ flight.tickets }}</p>
+  {% comment %} <a href="{% url 'buy_ticket' flight.id %}" class="btn btn-primary">Buy Ticket</a> {% endcomment%}
+  <form method="POST" action="{% url 'buy_ticket' flight.id %}">
+    {% csrf_token %} Number:<input name="number" />
+    <input type="submit" value="Buy Ticket" class="btn btn-success" />
+  </form>
+
+  <form method="POST" action="{% url 'update_image' flight.id %}" enctype="multipart/form-data">
+    {% csrf_token %} Image:<input type="file" name="image" />
+    <input type="submit" value="Change Image" class="btn btn-info" />
+  </form>
+
+  <a href="{% url 'single_flight' flight.id %}">
+    <img src="{% static flight.image %}" class="img-responsive" style="width: 100%" alt="Image" />
+  </a>
+</div>
+{% endblock %}
