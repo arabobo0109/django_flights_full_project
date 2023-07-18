@@ -3,6 +3,24 @@ from django.shortcuts import render,redirect
 
 from flight.models import Flight
 
+
+def update_image(request, flight_id):
+    flight = Flight.objects.get(id=flight_id)
+    img = request.FILES.get('image')
+    flight.image = img
+    flight.save()
+    return redirect("single_flight", flight_id)
+    
+
+def single_flight(request, flight_id):
+    flight = Flight.objects.get(id=flight_id)
+    context = {
+        'flight': flight  # Replace 'data' with the data you want to pass to the template
+    }
+    # return HttpResponse(f"Single flight {flight}")
+    return render(request, 'single_flight.html', context)
+
+
 def buy_ticket(request, flight_id):
     if request.method == 'POST':
         number = request.POST.get('number')
