@@ -14,8 +14,11 @@ def buy_ticket(request, flight_id):
     
 
 def flights(request):
-    # Your logic to fetch data or perform other operations
+    # filter by tickets number - get tickets number from GET request
+    tickets_max = request.GET.get('tickets_max')
     all_flights = Flight.objects.all()
+    if tickets_max:
+        all_flights = all_flights.filter(tickets__lt=tickets_max)
     context = {
         'flights': all_flights  # Replace 'data' with the data you want to pass to the template
     }
