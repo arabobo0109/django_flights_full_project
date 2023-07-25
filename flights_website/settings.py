@@ -124,6 +124,7 @@ STATICFILES_DIRS = [
 ]
 MEDIA_ROOT = 'static/' 
 
+AUTH_USER_MODEL = "flight.MyUser"
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.2/ref/settings/#default-auto-field

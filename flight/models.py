@@ -1,4 +1,5 @@
 from django.db import models
+from django.contrib.auth.models import User
 
 # Create your models here.
 
@@ -21,17 +22,25 @@ from django.db import models
 #  Playlist Name
 #  User_ID (FK) 
 
-class User(models.Model):
-    name = models.CharField(max_length=100, null=False)
-    date = models.DateTimeField(null=False)
+from django.contrib.auth.models import AbstractUser
 
-class SoundList(models.Model):
-    name = models.CharField(max_length=100, null=False)
-    user = models.ForeignKey(User, on_delete=models.CASCADE)
 
-class Sound(models.Model):
-    name = models.CharField(max_length=100, null=False)
-    sound_list = models.ManyToManyField(SoundList)
+class MyUser(AbstractUser):
+    city = models.CharField(max_length=100, null=True)
+    
+
+# class Customer(models.Model):
+#     user = models.OneToOneField(User, on_delete=models.CASCADE)
+#     city = models.CharField(max_length=100, null=False)
+
+
+# class SoundList(models.Model):
+#     name = models.CharField(max_length=100, null=False)
+#     user = models.ForeignKey(User, on_delete=models.CASCADE)
+
+# class Sound(models.Model):
+#     name = models.CharField(max_length=100, null=False)
+#     sound_list = models.ManyToManyField(SoundList)
 
     
 
