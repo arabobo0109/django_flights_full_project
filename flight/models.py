@@ -9,6 +9,32 @@ from django.db import models
 # Airline
 # Date
 
+
+# User:
+#  User_ID (PK)
+#  Name
+#  Password
+#  RegistraƟon date
+
+# Soundlist:
+#  Playlist_ID (PK)
+#  Playlist Name
+#  User_ID (FK) 
+
+class User(models.Model):
+    name = models.CharField(max_length=100, null=False)
+    date = models.DateTimeField(null=False)
+
+class SoundList(models.Model):
+    name = models.CharField(max_length=100, null=False)
+    user = models.ForeignKey(User, on_delete=models.CASCADE)
+
+class Sound(models.Model):
+    name = models.CharField(max_length=100, null=False)
+    sound_list = models.ManyToManyField(SoundList)
+
+    
+
 class Flight(models.Model):
     # created 
     # updated

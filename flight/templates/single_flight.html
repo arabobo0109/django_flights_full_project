@@ -15,6 +15,7 @@
   </form>
 
   <a href="{% url 'single_flight' flight.id %}">
+    {{ flight.image }}
     <img src="{% static flight.image %}" class="img-responsive" style="width: 100%" alt="Image" />
   </a>
 </div>
