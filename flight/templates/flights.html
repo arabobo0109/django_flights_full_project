@@ -1,9 +1,8 @@
 {% extends 'base.html' %} {% load static %}{% block content %}
 <div class="jumbotron">
   <div class="container text-center">
-    <h1>My Portfolio</h1>
-    <p>Some text that represents "Me"...</p>
-    <img src="{% static 'plane_images/cat.jpg' %}" alt="My image" />
+    <h3>Welcome to Flights App</h3>
+    <img src="{% static 'plane_images/flightsapp.jpg' %}" alt="My image" width="10%" />
   </div>
 </div>
 
@@ -15,7 +14,7 @@
     <input type="submit" value="Search" class="btn btn-success" />
   </form>
 
-  <h3>Some of my Work</h3>
+  <h3>Flights available:</h3>
   <br />
   <div class="row">
     {% for flight in flights %}
