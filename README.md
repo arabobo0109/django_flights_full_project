@@ -21,4 +21,5 @@ python manage.py runserver
 4. add render host to allowed hosts in settings.py
 5. add whitenoise
 6. add script.(not neccesary?)
-7. now - add db in render
+7.  add postgresql db in render
+8.  add environemnt variables - server should work both locally and remote.
